@@ -1,4 +1,4 @@
-package android
+// package android
 
 group 'com.tfliteflutter.tflite_flutter_helper'
 version '1.0-SNAPSHOT'
