@@ -34,7 +34,7 @@ class ImageConversion {
       int r = rgbValues[j++];
       int g = rgbValues[j++];
       int b = rgbValues[j++];
-      image.setPixelRgba(wi, hi, r, g, b);
+      image.setPixelRgb(wi, hi, r, g, b);
       wi++;
       if (wi % w == 0) {
         wi = 0;
@@ -48,7 +48,7 @@ class ImageConversion {
   static void convertImageToTensorBuffer(Image image, TensorBuffer buffer) {
     int w = image.width;
     int h = image.height;
-    List<int> intValues = image.data;
+    List<int> intValues = image.data?.toUint8List() ?? [];
 
     List<int> shape = [h, w, 3];
     List<int> rgbValues = List.filled(h * w * 3, 0);

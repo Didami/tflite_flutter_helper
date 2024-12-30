@@ -210,7 +210,7 @@ class _ImageContainer {
       List<int> shape = _bufferImage!.getShape();
       int h = shape[shape.length - 3];
       int w = shape[shape.length - 2];
-      _image = Image(w, h);
+      _image = Image(width: w, height: h);
     }
 
     _image = ImageConversion.convertTensorBufferToImage(_bufferImage!, _image!);
