@@ -4,7 +4,7 @@ version: 0.2.1
 homepage: https://www.github.com/am15h/tflite_flutter_helper
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ^3.6.0
 
 dependencies:
   flutter:
