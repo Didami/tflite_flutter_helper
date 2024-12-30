@@ -13,7 +13,7 @@ public class TfliteFlutterHelperPlugin implements FlutterPlugin, MethodCallHandl
   @Override
   public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
     final MethodChannel channel = new MethodChannel(flutterPluginBinding.getFlutterEngine().getDartExecutor(), "tflite_flutter_helper");
-    channel.setMethodCallHandler(new TfliteFlutterPlugin());
+    channel.setMethodCallHandler(new TfliteFlutterHelperPlugin());
   }
 
   // This static function is optional and equivalent to onAttachedToEngine. It supports the old
@@ -27,7 +27,7 @@ public class TfliteFlutterHelperPlugin implements FlutterPlugin, MethodCallHandl
   // in the same class.
   public static void registerWith(Registrar registrar) {
     final MethodChannel channel = new MethodChannel(registrar.messenger(), "tflite_flutter_helper");
-    channel.setMethodCallHandler(new TfliteFlutterPlugin());
+    channel.setMethodCallHandler(new TfliteFlutterHelperPlugin());
   }
 
   @Override
