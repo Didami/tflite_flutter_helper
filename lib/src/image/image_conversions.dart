@@ -48,14 +48,24 @@ class ImageConversion {
   static void convertImageToTensorBuffer(Image image, TensorBuffer buffer) {
     int w = image.width;
     int h = image.height;
-    List<int> intValues = image.data?.toUint8List() ?? [];
+    List<int> intValues = image.buffer.asInt8List();
 
     List<int> shape = [h, w, 3];
     List<int> rgbValues = List.filled(h * w * 3, 0);
+
+    String col = 'r';
+
     for (int i = 0, j = 0; i < intValues.length; i++) {
-      rgbValues[j++] = ((intValues[i]) & 0xFF);
-      rgbValues[j++] = ((intValues[i] >> 8) & 0xFF);
-      rgbValues[j++] = ((intValues[i] >> 16) & 0xFF);
+      if (col == 'r') {
+        rgbValues[j++] = ((intValues[i]) & 0xFF);
+        col = 'g';
+      } else if (col == 'g') {
+        rgbValues[j++] = ((intValues[i] >> 8) & 0xFF);
+        col = 'b';
+      } else if (col == 'b') {
+        rgbValues[j++] = ((intValues[i] >> 16) & 0xFF);
+        col = 'r';
+      }
     }
 
     buffer.loadList(rgbValues, shape: shape);
